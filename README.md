@@ -13,7 +13,7 @@ conda activate CiFi_Nextflow_env
 ### 2. Create paths to tmp files
 
 \
-By default the pipeline will store tmp files in /tmp. If you wish to write to new temporary files for SINGULARITY_TMPDIR and SINGULARITY_CACHEDIR save them here:
+By default the pipeline will store tmp files in `/tmp`. If you wish to write to new temporary files for `SINGULARITY_TMPDIR` and `SINGULARITY_CACHEDIR` save them here:
 
 ```         
 export SINGULARITY_TMPDIR=/PATH/TO/TMPDIR
