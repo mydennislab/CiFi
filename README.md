@@ -20,7 +20,7 @@ export SINGULARITY_TMPDIR=/PATH/TO/TMPDIR
 export SINGULARITY_CACHEDIR=/PATH/TO/CACHE
 ```
 
-### 3. Create paths to tmp files
+### 3. Create path to results folder
 
 ```         
 mkdir /PATH/TO/RESULTS/FOLDER_NAME
