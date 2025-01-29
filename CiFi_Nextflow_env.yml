@@ -131,4 +131,3 @@ dependencies:
   - zlib=1.3.1=hb9d3cd8_2
   - zstandard=0.23.0=py39h08a7858_1
   - zstd=1.5.6=ha6fb4c9_0
-prefix: /share/dennislab/users/smcginty/miniconda3/envs/Nextflow_env
