@@ -123,7 +123,7 @@ bam2pairs -l -c <sizes.genome> <output.mapq_filtered_paired_end.bam> <sample.bam
 
 ### 7. Convert pairs file to HiC file
 
-Install [java](https://www.java.com/en/download/help/linux_x64_install.html#download) and load\
+Install [java](https://www.java.com/en/download/help/linux_x64_install.html#download) and load
 
 Download [juicertools](https://github.com/aidenlab/juicer/wiki/Download)\
 \
