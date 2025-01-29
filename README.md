@@ -26,7 +26,7 @@ export SINGULARITY_CACHEDIR=/PATH/TO/CACHE
 mkdir /PATH/TO/RESULTS/FOLDER_NAME
 ```
 
-When complete this folder will contain these folders:\
+When complete this folder will contain these folders:
 
 -   bams
 
@@ -42,7 +42,7 @@ As well as this report: `wf-pore-c-report.html`
 
 ### 4. Run `nextflow` command and check flags
 
-Check flags:\
+Check flags:
 
 ```         
 nextflow run epi2me-labs/wf-pore-c \--help
@@ -103,7 +103,7 @@ Run within the paired_end folder within results with a mapq filter of 1:
 
 ### 6. Convert filtered paired-end bam to pairs
 
-Reactivate `conda` environment:\
+Reactivate `CiFi_Nextflow_env` conda environment:
 
 ```         
 conda activate CiFi_Nextflow_env
@@ -129,7 +129,7 @@ Download [juicertools](https://github.com/aidenlab/juicer/wiki/Download)\
 \
 `Juicertools` takes in pairs input to output a `.hic` file. This `.hic` file can be loaded into `Juicebox` or `UCSC` for visualization.\
 \
-Run `juicertools`:\
+Run `juicertools`:
 
 ```
 java -jar /share/dennislab/programs/juicer/CPU/common/juicer_tools.1.9.9_jcuda.0.8.jar pre -t </PATH/TO/WORKING/DIR> <sample.bam2pairsbsorted.pairs.gz> <output_sample_name.hic> sizes.genome
