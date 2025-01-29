@@ -52,14 +52,14 @@ Run Command:
 
 ```         
 nextflow run epi2me-labs/wf-pore-c -work-dir ./workflow/  -c  nextflow.config \
---bam 'INPUT_BAM' \ 
---ref 'PATH_TO_REF_GENOME' \
---cutter 'RESTRICTION ENZYME NAME' \
---out_dir './results/FOLDER_NAME' \
+--bam <INPUT_BAM> \ 
+--ref <PATH_TO_REF_GENOME> \
+--cutter <RESTRICTION ENZYME NAME> \
+--out_dir <./results/FOLDER_NAME> \
 --threads 120 \
 --minimap2_settings '-x map-pb' \
 --paired_end \ #generates paired-end file that will be converted to Hi-C
---sample 'SAMPLE_NAME' # can match folder
+--sample <SAMPLE_NAME> # can match folder
 ```
 
 ### 5. Filter the paired-end bam by mapping quality (MAPQ)
@@ -98,7 +98,7 @@ Run the program with the following command:
 Run within the paired_end folder within results with a mapq filter of 1:
 
 ```         
-./filter_bam /RESULTS/FOLDER_NAME/paired_end/input.paired_end.bam /RESULTS/FOLDER_NAME/paired_end/output.mapq_filtered_paired_end.bam 1 [num_threads]
+./filter_bam </RESULTS/FOLDER_NAME/paired_end/input.paired_end.bam> </RESULTS/FOLDER_NAME/paired_end/output.mapq_filtered_paired_end.bam> <1> <num_threads>
 ```
 
 ### 6. Convert filtered paired-end bam to pairs
@@ -118,7 +118,7 @@ cut -f1,2 fasta.fai > sizes.genome
 Run `bam2pairs` to convert filtered paired-end file into `.pairs.gz` file
 
 ```         
-bam2pairs [-l][-c sizes.genome] <output.mapq_filtered_paired_end.bam> <sample.bam2pairs>
+bam2pairs -l -c <sizes.genome> <output.mapq_filtered_paired_end.bam> <sample.bam2pairs>
 ```
 
 ### 7. Convert pairs file to HiC file
@@ -132,5 +132,5 @@ Download [juicertools](https://github.com/aidenlab/juicer/wiki/Download)\
 Run `juicertools`:
 
 ```
-java -jar /share/dennislab/programs/juicer/CPU/common/juicer_tools.1.9.9_jcuda.0.8.jar pre -t </PATH/TO/WORKING/DIR> <sample.bam2pairsbsorted.pairs.gz> <output_sample_name.hic> sizes.genome
+java -jar juicer_tools.VERSION_jcuda.0.8.jar pre -t </PATH/TO/WORKING/DIR> <sample.bam2pairsbsorted.pairs.gz> <output_sample_name.hic> <sizes.genome>
 ```
