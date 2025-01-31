@@ -14,7 +14,7 @@ Bedtools man page: [BEDTools suite](https://bedtools.readthedocs.io/en/latest/co
 Download `CiFi_analysis.yml` and activate:
 
 ```         
-wget https://raw.githubusercontent.com/mydennislab/CiFi/refs/heads/main/CiFi_Nextflow_env.yml
+wget https://raw.githubusercontent.com/mydennislab/CiFi/refs/heads/main/CiFi_analysis.yml
 conda env create -f CiFi_analysis.yml
 conda activate CiFi_analysis
 ```
