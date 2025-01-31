@@ -4,7 +4,22 @@ Aligned coordinate sorted segment bam is here: `/PATH/TO/RESULTS/FOLDER_NAME/bam
 
 `mosdepth` will be used to assess coverage.
 
-### 1. Generate bedfile of coverage windows
+
+### 1. Download and activate conda environment for CiFi analysis
+
+mosdepth Github page: [mosdepth](https://github.com/brentp/mosdepth)
+
+Bedtools man page: [BEDTools suite](https://bedtools.readthedocs.io/en/latest/content/bedtools-suite.html)
+
+Download `CiFi_analysis.yml` and activate:
+
+```         
+wget https://raw.githubusercontent.com/mydennislab/CiFi/refs/heads/main/CiFi_Nextflow_env.yml
+conda env create -f CiFi_analysis.yml
+conda activate CiFi_analysis
+```
+
+### 2. Generate bedfile of coverage windows
 
 Read in chromosome sizes file:
 
@@ -53,20 +68,6 @@ mosdepth_windows_list %>%
   # Write the resulting tibble to a BED file
   write_tsv(file = "~/DennisLab/Cifi/coverage/all_chr_coverage_windows.5000.bed", 
             col_names = FALSE, quote = "none")
-```
-
-### 2. Download and activate conda environment for coverage analysis
-
-mosdepth Github page: [mosdepth](https://github.com/brentp/mosdepth)
-
-Bedtools man page: [BEDTools suite](https://bedtools.readthedocs.io/en/latest/content/bedtools-suite.html)
-
-Download `CiFi_coverage_analysis.yml` and activate:
-
-```         
-wget https://raw.githubusercontent.com/mydennislab/CiFi/refs/heads/main/coverage_analysis/CiFi_coverage_analysis.yml
-conda env create -f 
-conda activate CiFi_coverage_analysis
 ```
 
 ### 3. Filter bed windows and run `mosdepth`
