@@ -63,25 +63,45 @@ paf.table_one_CiFi_read <- readPaf(
 Clean paf file and modify query start, end, and name:
 
 ```{r}
+# Process and filter PAF (Pairwise Alignment Format)
 filt_paf.table_one_CiFi_read = paf.table_one_CiFi_read %>%
-	arrange(desc(q.name)) %>%
-  mutate(q.start = str_extract(q.name,"ccs:([:digit:]+)",group = 1) %>% as.numeric(),
-				 q.end = str_extract(q.name,"([:digit:]+)$",group = 1)%>% as.numeric(),
-				 q.name = str_extract(q.name,"(.+)/ccs",group = 1)
-				 )
+  
+  # Arrange the table in descending order
+  arrange(desc(q.name)) %>%
+  
+  # Extract and mutate new columns from q.name
+  mutate(
+    # Extract the query start position from q.name
+    q.start = str_extract(q.name, "ccs:([:digit:]+)", group = 1) %>% as.numeric(),
+    
+    # Extract the query end position from q.name
+    q.end = str_extract(q.name, "([:digit:]+)$", group = 1) %>% as.numeric(),
+    
+    # Extract the base query name before "/ccs"
+    q.name = str_extract(q.name, "(.+)/ccs", group = 1)
+  )
 ```
 
 In order to show chromosome context as well as the CiFi read on the same plot we need to adjust the scale. Set scale and adjust the sizes of the segments by this scale:
 
 ```{r}
-read_size = max(filt_paf.table_one_CiFi_read.end) - min(filt_paf.table_one_CiFi_read.start)
-region_size = max(filt_paf.table_one_CiFi_read.end) - min(filt_paf.table_one_CiFi_read.start)
-scale = round(region_size/read_size,0)
+# Calculate the total read size
+read_size = max(filt_paf.table_one_CiFi_read$end) - min(filt_paf.table_one_CiFi_read$start)
 
-scale_paf.table_one_CiFi_read  = filt_paf.table_one_CiFi_read %>%
-  mutate(q.start = q.start*scale,
-				 q.end = q.end*scale,
-				 q.len = q.len*scale)
+# Calculate the region size
+region_size = max(filt_paf.table_one_CiFi_read$end) - min(filt_paf.table_one_CiFi_read$start)
+
+# Compute the scaling factor by dividing region size by read size
+scale = round(region_size / read_size, 0)
+
+# Apply scaling to query start, end, and length values in the filtered PAF table
+scale_paf.table_one_CiFi_read = filt_paf.table_one_CiFi_read %>%
+  mutate(
+    q.start = q.start * scale,  # Scale query start position
+    q.end = q.end * scale,      # Scale query end position
+    q.len = q.len * scale       # Scale query length
+  )
+
 ```
 
 ### 5. Plot the segment alignments
