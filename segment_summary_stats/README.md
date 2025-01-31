@@ -19,7 +19,7 @@ conda activate CiFi_analysis
 ### 2. Extract segment IDs from Aligned coordinate sorted segment bam
 
 Example segment IDs:\
-\
+
 
 |                   Segment ID                    |  Read ID  | Segment Start | Segment End | Segment Length |
 |:-------------------------------------:|:---------:|:---------:|:---------:|:---------:|
