@@ -134,3 +134,22 @@ Run `juicertools`:
 ```
 java -jar juicer_tools.VERSION_jcuda.0.8.jar pre -t </PATH/TO/WORKING/DIR> <sample.bam2pairsbsorted.pairs.gz> <output_sample_name.hic> <sizes.genome>
 ```
+
+
+### Downloading CiFi Data
+
+HG002 with DpnII as RE:
+
+```
+wget https://bioshare.bioinformatics.ucdavis.edu/bioshare/download/rlc692m7tk5cibb/ciFi/HG002_revio/HG002_DpnII_aligned_segments.cs.bam #Aligned coordinate sorted segment bam
+wget https://bioshare.bioinformatics.ucdavis.edu/bioshare/download/rlc692m7tk5cibb/ciFi/HG002_revio/HG002_DpnII_aligned_segments.cs.bam.csi #index
+wget https://bioshare.bioinformatics.ucdavis.edu/bioshare/download/rlc692m7tk5cibb/ciFi/HG002_revio/HG002_DpnII_paired_end.ns.bam #Mock Paired end bam
+```
+
+GM12878 with DpnII as RE:
+
+```
+wget https://bioshare.bioinformatics.ucdavis.edu/bioshare/download/rlc692m7tk5cibb/ciFi/GM12878_DpnII_aligned_segments.cs.bam #Aligned coordinate sorted segment bam
+wget https://bioshare.bioinformatics.ucdavis.edu/bioshare/download/rlc692m7tk5cibb/ciFi/GM12878_DpnII_aligned_segments.cs.bam.csi #index 
+wget https://bioshare.bioinformatics.ucdavis.edu/bioshare/download/rlc692m7tk5cibb/ciFi/GM12878_DpnII_paired_end.ns.bam #Mock Paired end bam
+```
