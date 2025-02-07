@@ -138,18 +138,82 @@ java -jar juicer_tools.VERSION_jcuda.0.8.jar pre -t </PATH/TO/WORKING/DIR> <samp
 
 ### Downloading CiFi Data
 
-HG002 with DpnII as RE:
+##### `GM12878` CiFi HiFi v2.0 with DpnII as a restriction enzyme
 
 ```
-wget https://bioshare.bioinformatics.ucdavis.edu/bioshare/download/rlc692m7tk5cibb/ciFi/HG002_revio/HG002_DpnII_aligned_segments.cs.bam #Aligned coordinate sorted segment bam
-wget https://bioshare.bioinformatics.ucdavis.edu/bioshare/download/rlc692m7tk5cibb/ciFi/HG002_revio/HG002_DpnII_aligned_segments.cs.bam.csi #index
-wget https://bioshare.bioinformatics.ucdavis.edu/bioshare/download/rlc692m7tk5cibb/ciFi/HG002_revio/HG002_DpnII_paired_end.ns.bam #Mock Paired end bam
+GM12878_v2_path="https://bioshare.bioinformatics.ucdavis.edu/bioshare/download/rlc692m7tk5cibb/ciFi/GM12878_CiFi_v2/"
+
+wget ${GM12878_v2_path}GM12878_DpnII_CiFi.HiFi_v2.0_hifi_reads.bam #Raw CiFi HiFi reads
+wget ${GM12878_v2_path}GM12878_DpnII_CiFi.HiFi_v2.0_hifi_reads.bam.pbi #Raw CiFi HiFi reads index
+wget ${GM12878_v2_path}GM12878_DpnII_CiFi.HiFi_v2.0_aligned_segments.cs.bam #Aligned (coordinate sorted) segments
+wget ${GM12878_v2_path}GM12878_DpnII_CiFi.HiFi_v2.0_aligned_segments.cs.bam.csi #Aligned (coordinate sorted) segments index
+wget ${GM12878_v2_path}GM12878_DpnII_CiFi.HiFi_v2.0_paired_end.ns.bam #Mock paired end bam
 ```
 
-GM12878 with DpnII as RE:
+##### `HG002` CiFi HiFi v2.0 with DpnII as a restriction enzyme
 
 ```
-wget https://bioshare.bioinformatics.ucdavis.edu/bioshare/download/rlc692m7tk5cibb/ciFi/GM12878_DpnII_aligned_segments.cs.bam #Aligned coordinate sorted segment bam
-wget https://bioshare.bioinformatics.ucdavis.edu/bioshare/download/rlc692m7tk5cibb/ciFi/GM12878_DpnII_aligned_segments.cs.bam.csi #index 
-wget https://bioshare.bioinformatics.ucdavis.edu/bioshare/download/rlc692m7tk5cibb/ciFi/GM12878_DpnII_paired_end.ns.bam #Mock Paired end bam
+HG002_v2_path="https://bioshare.bioinformatics.ucdavis.edu/bioshare/download/rlc692m7tk5cibb/ciFi/HG002_CiFi_v2/"
+
+wget ${HG002_v2_path}HG002_DpnII_CiFi.HiFi_v2.0_hifi_reads.bam #Raw CiFi HiFi reads
+wget ${HG002_v2_path}HG002_DpnII_CiFi.HiFi_v2.0_hifi_reads.bam.pbi #Raw CiFi HiFi reads index
+wget ${HG002_v2_path}HG002_DpnII_CiFi.HiFi_v2.0_aligned_segments.cs.bam #Aligned (coordinate sorted) segments
+wget ${HG002_v2_path}HG002_DpnII_CiFi.HiFi_v2.0_aligned_segments.cs.bam.csi #Aligned (coordinate sorted) segments index
+wget ${HG002_v2_path}HG002_DpnII_CiFi.HiFi_v2.0_paired_end.ns.bam #Mock paired end bam
 ```
+
+
+##### `GM12878` CiFi HiFi v3.0 with DpnII as a restriction enzyme
+
+```
+GM12878_v3_path="https://bioshare.bioinformatics.ucdavis.edu/bioshare/download/rlc692m7tk5cibb/ciFi/GM12878_CiFi_v3/"
+
+wget ${GM12878_v3_path}GM12878_DpnII_CiFi.HiFi_v3.0_hifi_reads.bam #Raw CiFi HiFi reads
+wget ${GM12878_v3_path}GM12878_DpnII_CiFi.HiFi_v3.0_hifi_reads.bam.pbi #Raw CiFi HiFi reads index
+wget ${GM12878_v3_path}GM12878_DpnII_CiFi.HiFi_v3.0_aligned_segments.cs.bam #Aligned (coordinate sorted) segments
+wget ${GM12878_v3_path}GM12878_DpnII_CiFi.HiFi_v3.0_aligned_segments.cs.bam.csi #Aligned (coordinate sorted) segments index
+wget ${GM12878_v3_path}GM12878_DpnII_CiFi.HiFi_v3.0_paired_end.ns.bam #Mock paired end bam
+```
+
+##### `GM12878` CiFi HiFi v3.0 with HindIII as a restriction enzyme
+
+```
+GM12878_v3_path="https://bioshare.bioinformatics.ucdavis.edu/bioshare/download/rlc692m7tk5cibb/ciFi/GM12878_CiFi_v3/"
+
+wget ${GM12878_v3_path}GM12878_HindIII_CiFi.HiFi_v3.0_hifi_reads.bam #Raw CiFi HiFi reads
+wget ${GM12878_v3_path}GM12878_HindIII_CiFi.HiFi_v3.0_hifi_reads.bam.pbi #Raw CiFi HiFi reads index
+wget ${GM12878_v3_path}GM12878_HindIII_CiFi.HiFi_v3.0_aligned_segments.cs.bam #Aligned (coordinate sorted) segments
+wget ${GM12878_v3_path}GM12878_HindIII_CiFi.HiFi_v3.0_aligned_segments.cs.bam.csi #Aligned (coordinate sorted) segments index
+wget ${GM12878_v3_path}GM12878_HindIII_CiFi.HiFi_v3.0_paired_end.ns.bam #Mock paired end bam
+```
+
+
+##### `HG002` CiFi HiFi v3.0 with DpnII as a restriction enzyme
+
+```
+HG002_v3_path="https://bioshare.bioinformatics.ucdavis.edu/bioshare/download/rlc692m7tk5cibb/ciFi/HG002_CiFi_v3/"
+
+wget ${HG002_v3_path}HG002_DpnII_CiFi.HiFi_v3.0_hifi_reads.bam #Raw CiFi HiFi reads
+wget ${HG002_v3_path}HG002_DpnII_CiFi.HiFi_v3.0_hifi_reads.bam.pbi #Raw CiFi HiFi reads index
+wget ${HG002_v3_path}HG002_DpnII_CiFi.HiFi_v3.0_aligned_segments.cs.bam #Aligned (coordinate sorted) segments
+wget ${HG002_v3_path}HG002_DpnII_CiFi.HiFi_v3.0_aligned_segments.cs.bam.csi #Aligned (coordinate sorted) segments index
+wget ${HG002_v3_path}HG002_DpnII_CiFi.HiFi_v3.0_paired_end.ns.bam #Mock paired end bam
+```
+
+##### `HG002` CiFi HiFi v3.0 with HindIII as a restriction enzyme
+
+```
+HG002_v3_path="https://bioshare.bioinformatics.ucdavis.edu/bioshare/download/rlc692m7tk5cibb/ciFi/HG002_CiFi_v3/"
+
+wget ${HG002_v3_path}HG002_HindIII_CiFi.HiFi_v3.0_hifi_reads.bam #Raw CiFi HiFi reads
+wget ${HG002_v3_path}HG002_HindIII_CiFi.HiFi_v3.0_hifi_reads.bam.pbi #Raw CiFi HiFi reads index
+wget ${HG002_v3_path}HG002_HindIII_CiFi.HiFi_v3.0_aligned_segments.cs.bam #Aligned (coordinate sorted) segments
+wget ${HG002_v3_path}HG002_HindIII_CiFi.HiFi_v3.0_aligned_segments.cs.bam.csi #Aligned (coordinate sorted) segments index
+wget ${HG002_v3_path}HG002_HindIII_CiFi.HiFi_v3.0_paired_end.ns.bam #Mock paired end bam
+```
+
+
+`GM12878` data is included in this study and to please cite upon use:
+https://www.biorxiv.org/content/10.1101/2025.01.31.635566v1.article-info
+
+`HG002` data remains unpublished. If planning to use in publication please reach out to the Dennis lab
