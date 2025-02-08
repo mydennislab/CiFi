@@ -43,7 +43,9 @@ As well as this report: `wf-pore-c-report.html`
 ### 4. Run `nextflow` command and check flags
 
 
-The initial processing will use the wf-pore-c pipeline. See pipeline [here](https://github.com/epi2me-labs/wf-pore-c)
+The initial processing will use the wf-pore-c pipeline. See pipeline [here](https://github.com/epi2me-labs/wf-pore-c) \
+
+
 nf-core framework :https://doi.org/10.1038/s41587-020-0439-x
 
 Check flags:
