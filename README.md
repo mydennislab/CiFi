@@ -5,7 +5,7 @@
 `Conda` will be used to install software. The pipeline relies on `singularity` and `nextflow` . Installation for both of these as well as any necessary modules are included in the `conda` environment.
 
 ```         
-wget https://raw.githubusercontent.com/mydennislab/CiFi/refs/heads/main/CiFi_Nextflow_env.yml 
+wget https://raw.githubusercontent.com/mydennislab/CiFi/refs/heads/main/CiFi_Nextflow_env.yml](https://raw.githubusercontent.com/mydennislab/CiFi/refs/heads/main/CiFi_Nextflow_env.yml
 conda env create -f CiFi_Nextflow_env.yml
 conda activate CiFi_Nextflow_env
 ```
