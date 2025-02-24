@@ -141,6 +141,17 @@ Run `juicertools`:
 java -jar juicer_tools.VERSION_jcuda.0.8.jar pre -t </PATH/TO/WORKING/DIR> <sample.bam2pairsbsorted.pairs.gz> <output_sample_name.hic> <sizes.genome>
 ```
 
+### 8. Downstream analysis of CiFi data
+
+Download `CiFi_analysis.yml` and activate:
+
+```         
+wget https://raw.githubusercontent.com/mydennislab/CiFi/refs/heads/main/CiFi_analysis.yml
+conda env create -f CiFi_analysis.yml
+conda activate CiFi_analysis
+```
+
+
 
 ### Downloading CiFi Data
 
