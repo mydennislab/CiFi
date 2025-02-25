@@ -4,19 +4,7 @@ Aligned coordinate sorted segment bam is here: `/PATH/TO/RESULTS/FOLDER_NAME/bam
 
 `samtools` will be used to manipulating bams
 
-### 1. Download and activate conda environment for segment summary analysis
-
-Samtools man page: [samtools suite](https://www.htslib.org/doc/samtools.html)
-
-Download `CiFi_analysis.yml` and activate:
-
-```         
-wget https://raw.githubusercontent.com/mydennislab/CiFi/refs/heads/main/CiFi_analysis.yml
-conda env create -f CiFi_analysis.yml
-conda activate CiFi_analysis
-```
-
-### 2. Extract segment IDs from Aligned coordinate sorted segment bam
+### 1. Extract segment IDs from Aligned coordinate sorted segment bam
 
 Example segment IDs:
 
@@ -38,7 +26,7 @@ samtools view -F4 /results/GM12878_ultralow_Revio_HindIII/bams/GM12878_ultralow_
 cut -f 1  > GM12878_ultralow_Revio_HindIII.mapped_segment_IDs.txt
 ```
 
-### 3. Read in mapped_segment_IDs.txt
+### 2. Read in mapped_segment_IDs.txt
 
 Extract segment end and segment start to get read length. Also extract read ID
 
@@ -80,7 +68,7 @@ HindIII_segment_lengths.df = fread("GM12878_ultralow_Revio_HindIII.mapped_segmen
   )
 ```
 
-### 4. Count the number of segments per read
+### 3. Count the number of segments per read
 
 
 Group by read ID to count the number of segments per read
@@ -95,7 +83,7 @@ HindIII_segments_per_read.df = HindIII_segment_lengths.df %>%
 	tally()	
 ```
 
-### 5. Generate summary statistics
+### 4. Generate summary statistics
 
 Summary statistics function:
 
@@ -135,7 +123,7 @@ summary_stats(DpnII_segments_per_read_stats)
 summary_stats(HindIII_segments_per_read_stats)
 ```
 
-### 6. Plotting data
+### 5. Plotting data
 
 
 Merge the HindIII and DpnII datasets so they can be plotted together:
