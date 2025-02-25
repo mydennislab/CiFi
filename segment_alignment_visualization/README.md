@@ -1,19 +1,8 @@
 # Visualizing a CiFi read using SVbyEye
 
-### 1. Download and activate conda environment for CiFi analysis
-
-Download `CiFi_analysis.yml` and activate:
-
-```         
-wget https://raw.githubusercontent.com/mydennislab/CiFi/refs/heads/main/CiFi_analysis.yml
-conda env create -f CiFi_analysis.yml
-conda activate CiFi_analysis
-```
-
-
 SVbyEye described [here](https://htmlpreview.github.io/?https://github.com/daewoooo/SVbyEye/blob/master/man/doc/SVbyEye.html)
 
-### 2. Extract the aligned segments for a specific read
+### 1. Extract the aligned segments for a specific read
 
 Aligned coordinate sorted segment bam is here: `/PATH/TO/RESULTS/FOLDER_NAME/bams/<sample>.cs.bam`
 
@@ -27,14 +16,14 @@ samtools view $Input_CS_segment_bam chr2 | cut -f 1 | grep $Read_ID > segment_ID
 samtools view -h -N segment_IDs.txt $Input_CS_segment_bam chr2 > CiFi_one_read_segments.sam
 ```
 
-### 3. Convert sam to paf
+### 2. Convert sam to paf
 
 Use `paftools` to convert to paf
 ```
 paftools.js sam2paf CiFi_one_read_segments.sam > CiFi_one_read_segments.paf
 ```
 
-### 4. Install SVbyEye and load
+### 3. Install SVbyEye and load
 
 SVbyEye described [here](https://htmlpreview.github.io/?https://github.com/daewoooo/SVbyEye/blob/master/man/doc/SVbyEye.html)
 
