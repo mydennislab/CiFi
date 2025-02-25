@@ -1,7 +1,5 @@
 # Comparing MAPQ of segments across different genomic regions
 
-for CiFi:
-
 ### 1. Save merged bedfiles of different repetitive genomic regions:
 
 Segmental Duplications (SDs) and Centromeric Satellites (cenSats)
