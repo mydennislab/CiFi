@@ -4,22 +4,7 @@ Aligned coordinate sorted segment bam is here: `/PATH/TO/RESULTS/FOLDER_NAME/bam
 
 `mosdepth` will be used to assess coverage.
 
-
-### 1. Download and activate conda environment for CiFi analysis
-
-mosdepth Github page: [mosdepth](https://github.com/brentp/mosdepth)
-
-Bedtools man page: [BEDTools suite](https://bedtools.readthedocs.io/en/latest/content/bedtools-suite.html)
-
-Download `CiFi_analysis.yml` and activate:
-
-```         
-wget https://raw.githubusercontent.com/mydennislab/CiFi/refs/heads/main/CiFi_analysis.yml
-conda env create -f CiFi_analysis.yml
-conda activate CiFi_analysis
-```
-
-### 2. Generate bedfile of coverage windows
+### 1. Generate bedfile of coverage windows
 
 Read in chromosome sizes file:
 
@@ -70,7 +55,7 @@ mosdepth_windows_list %>%
             col_names = FALSE, quote = "none")
 ```
 
-### 3. Filter bed windows and run `mosdepth`
+### 2. Filter bed windows and run `mosdepth`
 
 For the analysis in this study we are only interested in studying "unique" space windows or windows that do not share overlap with segmental duplications (SDs) or centromere satellites (cenSat). This filtering is only necessary if you wish to retain specific windows.
 
@@ -104,7 +89,7 @@ Mosdepth output:
 
 -   <name>.regions.bed.gz.csi
 
-### 4. Read `mosdepth` output into R
+### 3. Read `mosdepth` output into R
 
 Load in necessary packages:
 
@@ -164,7 +149,7 @@ merged_coverage = GM12878_standard_coverage_unique %>%
 	mutate(UCSC_coord = paste(Chrom,":",Start,"-",End,sep = ""),.before = Standard_Depth)
 ```
 
-### 5. Plot mosdepth data
+### 4. Plot mosdepth data
 
 Plot one or more chromosomes:
 
