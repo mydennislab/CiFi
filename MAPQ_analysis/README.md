@@ -1,6 +1,13 @@
 # Comparing MAPQ of segments across different genomic regions
 
-### 1. Save merged bedfiles of different repetitive genomic regions:
+### 1. Download and save merged bedfiles of different repetitive genomic regions:
+
+
+Download bedfiles:
+
+```
+wget -r --level=10 -nH -nc --cut-dirs=5 --no-parent --reject "wget_index.html" --no-check-certificate --header "Cookie: sessionid=l0xwzgn8fnp9ke2fo1tyn9kule0jwwnj;" https://bioshare.bioinformatics.ucdavis.edu/bioshare/wget/cpqqdfge5lfvovq/Sean/t2t_coords/wget_index.html
+```
 
 Segmental Duplications (SDs) and Centromeric Satellites (cenSats)
 ```         
