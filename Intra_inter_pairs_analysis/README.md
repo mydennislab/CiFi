@@ -18,7 +18,7 @@ Then we calculate take the difference between the coordinate of the read and its
 
 ```         
 MAPQ_filt_PE_bam="results/Merged_GM12878_CiFi/paired_end/GM12878_CiFi_mapq1_paired_end.bam"
-samtools view -@ 150 -f 67 $MAPQ_filt_PE_bam | head | awk '{print $8 - $4}' > GM12878_CiFi_mapq1_paired_end_intra_pairs_distance.txt
+samtools view -@ 150 -f 67 $MAPQ_filt_PE_bam | awk '{print $8 - $4}' > GM12878_CiFi_mapq1_paired_end_intra_pairs_distance.txt
 ```
 
 ### 2. Read and plot distance between intrachromosomal pairs
