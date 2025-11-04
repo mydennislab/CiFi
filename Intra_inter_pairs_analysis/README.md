@@ -74,16 +74,96 @@ intra_distance_ggplot = intra_pairs_distance %>%
 
 ```
 
-### 3. Compare number of intrachromosoal contacts to number of total contacts
+### 3. Compare number of intrachromosomal contacts to number of total contacts
 
-Total number of intrachromosomal contacts:
+Dump contacts at lowest resolution (2.5 Mbp):
 
-```         
-samtools view -@ 150 -f 67 -c $MAPQ_filt_PE_bam
+```
+JAR="/PATH/TO/juicer_tools.jar"
+HIC="/PATH/TO/INPUT.hic"
+NORM="NONE"
+MAP="observed"
+UNIT="BP"
+BIN=2500000                 # 2.5 Mb
+LABEL="2.5_mbp"             # filename label
+
+# Chromosomes 1–22 only
+CHRS=( {1..22} )
+
+# Loop over all chromosome pairs in upper triangle (including self)
+for (( i=0; i<${#CHRS[@]}; i++ )); do
+  for (( j=i; j<${#CHRS[@]}; j++ )); do
+    a="${CHRS[$i]}"
+    b="${CHRS[$j]}"
+    out="./chr${a}_chr${b}_${LABEL}_counts.txt"
+    
+    echo "Starting chr${a} vs chr${b}..."
+    java -jar "$JAR" dump "$MAP" "$NORM" "$HIC" "chr${a}" "chr${b}" "$UNIT" "$BIN" > "$out"
+    echo "Finished chr${a} vs chr${b} → $out"
+  done
+done
 ```
 
-Total number of contacts:
+Summarize into a single file:
 
-```         
-samtools view -@ 150 -f 65 -c $MAPQ_filt_PE_bam
+```
+#!/usr/bin/env bash
+set -euo pipefail
+OUTPUT_NAME="" #Fill in output file name
+SUMMARY=${OUTPUT_NAME}"_chr_pair_sums.tsv"
+
+# Header
+echo -e "chrA\tchrB\tsum" > "$SUMMARY"
+
+shopt -s nullglob
+for f in chr*_chr*_*_counts.txt; do
+  # Extract chr indices from the filename: chrA_chrB_...
+  if [[ "$f" =~ ^chr([0-9]+)_chr([0-9]+)_ ]]; then
+    a="${BASH_REMATCH[1]}"
+    b="${BASH_REMATCH[2]}"
+  else
+    echo "Skipping unrecognized file name: $f" >&2
+    continue
+  fi
+
+  # Sum column 3; ignores non-numeric values automatically
+  sum=$(awk '{ if ($3+0 == $3) s += $3 } END { print s+0 }' "$f")
+
+  echo -e "chr${a}\tchr${b}\t${sum}" >> "$SUMMARY"
+  echo "Summed column 3 for $f → chr${a} chr${b} = ${sum}"
+done
+
+# Optional: sort by chrA, then chrB (version sort handles chr10 after chr9)
+# keep header at top
+{ head -n1 "$SUMMARY"; tail -n +2 "$SUMMARY" | sort -t$'\t' -k1,1V -k2,2V; } > "${SUMMARY}.sorted"
+mv "${SUMMARY}.sorted" "$SUMMARY"
+
+echo "Summary written to: $SUMMARY"
+```
+
+Read and count intra vs inter CiFi contacts:
+
+```
+chrom_contacts = fread("/PATH/TO/inter_intra_dump/OUTPUT_NAME_chr_pair_sums.tsv")
+
+Total_contacts = chrom_contacts %>% pull(sum) %>% sum()
+
+Total_contacts
+
+intra_contacts = chrom_contacts %>%
+	filter(chrA == chrB) %>%
+	pull(sum) %>%
+	sum()
+
+intra_CiFi_contacts
+
+inter_contacts = chrom_contacts %>%
+	filter(chrA != chrB) %>%
+	pull(sum) %>%
+	sum()
+
+inter_contacts
+
+#intra contact percentage
+intra_contacts/Total_contacts
 ```
