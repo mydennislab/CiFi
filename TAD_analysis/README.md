@@ -255,5 +255,44 @@ done
 
 ### 4. Compare TAD gaps between CiFi and Hi-C
 
-cat CiFi_merged_mapq1_50000_KR_chr{1..22}_KR.bed > CiFi_merged_all_chr1_22_KR.bed
 
+Merge all chromosomes into combined BEDs and extract gap regions:
+
+```
+cat CiFi_merged_mapq1_50000_KR_chr{1..22}_KR.bed > CiFi_merged_all_50000_chr1_22_KR.bed
+cat Illumina_HiC_coverage_match_50000_chr{1..22}_KR.bed > Illumina_HiC_coverage_match_50000_chr1_22_KR.bed
+
+grep "gap" CiFi_merged_all_50000_chr1_22_KR.bed > CiFi_merged_all_50000_chr1_22_KR.gap.bed
+grep "gap" Illumina_HiC_coverage_match_50000_chr1_22_KR.bed > Illumina_HiC_coverage_match_50000_chr1_22_KR.gap.bed
+```
+
+Compute total gap length:
+
+```
+awk '{sum += $3 - $2} END {print sum}' CiFi_merged_all_50000_chr1_22_KR.gap.bed
+# 62900000
+awk '{sum += $3 - $2} END {print sum}' Illumina_HiC_coverage_match_50000_chr1_22_KR.gap.bed
+# 144150000
+```
+
+Compute SD gap overlap length:
+
+```
+awk '{sum += $3 - $2} END {print sum}' SD.t2tv2.0.merge.bed
+# 201931911
+bedtools intersect -a CiFi_merged_all_50000_chr1_22_KR.gap.bed -b SD.t2tv2.0.merge.bed | awk '{sum += $3 - $2} END {print sum}'
+# 17358466
+bedtools intersect -a Illumina_HiC_coverage_match_50000_chr1_22_KR.gap.bed -b SD.t2tv2.0.merge.bed | awk '{sum += $3 - $2} END {print sum}'
+# 35348160
+```
+
+Compute cenSat gap overlap length:
+
+```
+awk '{sum += $3 - $2} END {print sum}' cenSat.t2tv2.0.merge.bed
+# 404973519
+bedtools intersect -a CiFi_merged_all_50000_chr1_22_KR.gap.bed -b cenSat.t2tv2.0.merge.bed | awk '{sum += $3 - $2} END {print sum}'
+# 62250000
+bedtools intersect -a Illumina_HiC_coverage_match_50000_chr1_22_KR.gap.bed -b cenSat.t2tv2.0.merge.bed | awk '{sum += $3 - $2} END {print sum}'
+# 136850000
+```
