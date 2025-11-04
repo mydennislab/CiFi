@@ -1,6 +1,7 @@
 # Phasing CiFi segments using Whatshap
 
 Whatshap documentation [here](https://whatshap.readthedocs.io/en/latest/)
+
 Whatshap haplotag documentation [here](https://whatshap.readthedocs.io/en/latest/guide.html#whatshap-haplotag)
 
 ### 1. Whatshap haplotag for phasing mapped segment bam
